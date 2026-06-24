@@ -11,7 +11,7 @@
 - 创建项目入口文档和少量架构文档。
 - 记录 JANUS 和现有 Golem/SST 组件之间的参考关系。
 - 在项目内创建 `sst/elements/golem/`，作为 JANUS-local Golem SST element 学习和自定义修改区。
-- 保留 `src/`、`tests/`、`scripts/` 作为未来实现入口，但当前只放 README。
+- 保留 `tests/`、`scripts/` 作为未来项目级入口；硬件源码统一放在 `sst/`。
 - 建立持续更新的 `task_plan.md`、`findings.md`、`progress.md`。
 
 ### 当前不做
@@ -33,7 +33,8 @@
 - [x] 创建 `README.md`，定义 JANUS 当前工程定位。
 - [x] 创建 `docs/architecture/` 文档组。
 - [x] 创建 `docs/sst/` 文档组。
-- [x] 创建 `src/README.md`、`tests/README.md`、`scripts/README.md` 占位入口。
+- [x] 创建 `tests/README.md`、`scripts/README.md` 占位入口。
+- [x] 删除不再需要的顶层 `src/` 占位目录；硬件源码集中在 `sst/`。
 - [x] 记录当前参考事实到 `findings.md`。
 
 ## Phase 0.5: JANUS-local SST 硬件目录

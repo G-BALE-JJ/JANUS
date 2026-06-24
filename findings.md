@@ -44,6 +44,7 @@
 | 新建 `sst/elements/golem/` 作为 JANUS-local Golem 源码区 | 允许 JANUS 学习和自定义修改 Golem，不污染参考仓库 |
 | 不再维护 `sst/elements/janus/` 过早拆分骨架 | 当前目标是先掌握 Golem SST element，而不是先注册新 element |
 | 复制 upstream Golem 当前工作树白名单源码 | 保留学习/修改所需源码，排除构建产物和运行 artifacts |
+| 删除顶层 `src/` 占位目录 | 当前硬件源码统一放在 `sst/`，保留 `src/` 会造成职责混淆 |
 
 ## 待确认问题
 

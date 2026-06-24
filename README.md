@@ -69,8 +69,6 @@ JANUS/
 │   │   └── README.md
 │   └── scripts/
 │       └── README.md
-├── src/
-│   └── README.md
 ├── tests/
 │   └── README.md
 └── scripts/

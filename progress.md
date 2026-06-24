@@ -40,6 +40,7 @@
 - 将本地硬件源码区收敛为 `sst/elements/golem/`。
 - 从参考仓库导入 Golem 核心源码、核心子目录、精选 architecture/config/small test 参考文件。
 - 新增 `sst/elements/golem/IMPORT_NOTES.md`，记录 upstream commit、dirty 状态和导入范围。
+- 用户确认顶层 `src/` 已不需要；删除 `src/README.md`，硬件源码统一放在 `sst/`。
 
 ### 未执行
 
