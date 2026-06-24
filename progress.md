@@ -31,10 +31,19 @@
 - `tests/README.md`
 - `scripts/README.md`
 
+### 补充更新
+
+- 用户确认需要在 JANUS 项目内新建自己的 SST 硬件目录，未来自定义 SST 组件在 JANUS 内完成，不影响 `/data4/jjgong/RISC-V-CIM-Manycore-SST`。
+- 新增 `sst/` JANUS-local SST 硬件工程区。
+- 更新 `README.md`、`task_plan.md`、`findings.md`、`docs/sst/component-boundary-plan.md`，记录该决策。
+- 用户进一步确认当前本质只需要 Golem，不需要 `sst/elements/janus` 的过早多分支骨架。
+- 将本地硬件源码区收敛为 `sst/elements/golem/`。
+- 从参考仓库导入 Golem 核心源码、核心子目录、精选 architecture/config/small test 参考文件。
+- 新增 `sst/elements/golem/IMPORT_NOTES.md`，记录 upstream commit、dirty 状态和导入范围。
+
 ### 未执行
 
 - 未运行 SST。
 - 未运行测试。
 - 未修改 `/data4/jjgong/RISC-V-CIM-Manycore-SST`。
 - 未修改 `idea.md`。
-

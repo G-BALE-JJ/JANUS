@@ -7,6 +7,8 @@
 - 用户当前不要求跑通验证或运行端到端仿真。
 - 用户不希望创建 `docs/simulation`、`docs/isa`、`docs/workloads`、`docs/development`、`schemas` 等泛化目录。
 - JANUS 当前应参考 `/data4/jjgong/RISC-V-CIM-Manycore-SST` 的真实 Golem/SST 架构，而不是先凭空设计完整仿真软件栈。
+- 用户确认 JANUS 需要在本项目内新建自己的 SST 硬件目录，未来自定义 Golem/SST 组件放在 JANUS 内，不影响 `RISC-V-CIM-Manycore-SST`。
+- 用户确认当前本质只需要 Golem，不需要过早维护 `sst/elements/janus` 下的 P/D/KV/fabric/control 多分支骨架。
 
 ## 参考仓库观察
 
@@ -39,6 +41,9 @@
 | 暂不运行仿真 | 用户明确不需要跑通验证 |
 | 暂不修改参考仓库 | 先建立 JANUS 自身文档和映射 |
 | 后续优先复用 Golem 组件边界 | 降低重新发明 SST element 的风险 |
+| 新建 `sst/elements/golem/` 作为 JANUS-local Golem 源码区 | 允许 JANUS 学习和自定义修改 Golem，不污染参考仓库 |
+| 不再维护 `sst/elements/janus/` 过早拆分骨架 | 当前目标是先掌握 Golem SST element，而不是先注册新 element |
+| 复制 upstream Golem 当前工作树白名单源码 | 保留学习/修改所需源码，排除构建产物和运行 artifacts |
 
 ## 待确认问题
 
@@ -47,4 +52,4 @@
 3. P->D KV migration 是否复用现有 Merlin mesh + DMA path。
 4. 是否需要在 JANUS 中维护一份参考 Golem 代码摘要，还是只维护路径索引。
 5. 第一个 JANUS small case 应该从 GEMM prefill 开始，还是从 decode/GEMV + KV path 开始。
-
+6. `sst/elements/golem/` 中第一批 JANUS-specific 修改应从哪个模块开始：`array/`、`rocc/`、`globalmemory/`、`requestscheduler/`、`workercmdproc/` 或 `tests/small/`。

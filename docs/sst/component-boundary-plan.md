@@ -6,9 +6,11 @@
 
 ## 基本原则
 
-- 先复用现有 Golem 组件边界，再新增 JANUS-specific component。
-- 先扩展 descriptor 和 runtime small case，再修改底层 SST element。
-- 先让 P-Golem/D-Golem 作为 role 出现，再决定是否拆成独立 element。
+- JANUS 自定义硬件内容放在 `sst/elements/golem/`，不直接修改 `/data4/jjgong/RISC-V-CIM-Manycore-SST`。
+- 当前目标是学习和自定义修改 Golem SST element，不急于注册新的 `janus` element。
+- 先参考并改造现有 Golem 组件边界，再决定是否新增 JANUS-specific component。
+- 先扩展 descriptor 和 runtime small case，再进行组件级修改。
+- P-Golem/D-Golem/KV/fabric/control 暂时作为 local Golem tree 内的演进方向，不先拆成多个空目录。
 - 任何新增组件都必须能解释为什么 `array/`、`globalmemory/`、`requestscheduler/`、`groupctrl/`、`workercmdproc/` 无法承担。
 
 ## 阶段计划
@@ -32,6 +34,18 @@
 - 定义 KVMigrationDescriptor。
 - 对照 `WorkerTaskListHeader`、`WorkerWindowDescriptor`、`RequestSchedulerMsg` 检查字段。
 
+### Stage 2.5: JANUS-local Golem tree
+
+状态：当前已建立目录骨架。
+
+目标：
+
+- 在 `sst/elements/golem/` 中维护 JANUS-local Golem 源码树。
+- 保留 upstream Golem copyright/header。
+- 在 `sst/elements/golem/tests/small/` 中维护或演化 JANUS 自己的 small case。
+- 在 `sst/elements/golem/tests/configs/` 中维护或演化 JANUS 自己的环境参数和配置。
+- 参考 Golem/SST，但不覆盖、不直接修改参考仓库。
+
 ### Stage 3: Small case 设计
 
 目标：
@@ -52,7 +66,7 @@
 
 目标：
 
-- 如果 role/config 不足，再新增 JANUS-specific subcomponent。
+- 如果 role/config 不足，再在 `sst/elements/golem/` 中新增 JANUS-specific subcomponent。
 - 可能新增的最小对象包括：
   - `JanusKVMetadata`
   - `JanusKVMigrationDescriptor`
@@ -70,7 +84,9 @@
 ## 当前不建议的做法
 
 - 直接复制整个 `RISC-V-CIM-Manycore-SST` 到 JANUS。
-- 直接新增 `janus` SST element 大文件。
+- 直接在参考仓库中修改 `golem` element。
+- 直接新增单个巨大的 `janus` SST element 大文件。
+- 同时维护 `sst/elements/janus` 和 `sst/elements/golem` 两套分叉结构。
 - 在没有 descriptor 的情况下修改 `workercmdproc/`。
 - 在没有 small case 的情况下修改 topology builder。
 - 先写 workload/schema 再找硬件路径。
@@ -81,4 +97,4 @@
 - 第一个实现应从 P-Golem prefill 还是 D-Golem KV path 开始。
 - P/D-Golem role 是否能通过环境变量表达。
 - KV path 的 metadata 是否进入 SST event，还是仅 runtime memory layout。
-
+- `sst/elements/golem/` 第一批 JANUS-specific 修改应从哪个模块开始。

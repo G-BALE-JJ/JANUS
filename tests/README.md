@@ -10,5 +10,4 @@
 4. SST smoke wrapper 测试。
 5. 真实 Golem/SST small case 测试。
 
-当前不要复制 `RISC-V-CIM-Manycore-SST/src/sst/elements/golem/tests`。需要时只引用其路径或新增明确的 JANUS small case。
-
+当前已经在 `sst/elements/golem/tests/` 下导入精选 Golem 测试参考，用于学习和后续自定义修改。不要再无差别复制完整 upstream `tests`、`artifacts`、`logs` 或构建产物。

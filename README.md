@@ -40,6 +40,35 @@ JANUS/
 │       ├── reference-architecture-notes.md
 │       ├── component-boundary-plan.md
 │       └── porting-roadmap.md
+├── sst/
+│   ├── README.md
+│   ├── elements/
+│   │   └── golem/
+│   │       ├── README.md
+│   │       ├── IMPORT_NOTES.md
+│   │       ├── Makefile.am
+│   │       ├── configure.m4
+│   │       ├── golem.cc
+│   │       ├── globalmemory.cc
+│   │       ├── globalmemory.h
+│   │       ├── array/
+│   │       ├── rocc/
+│   │       ├── globalmemory/
+│   │       ├── groupctrl/
+│   │       ├── requestscheduler/
+│   │       ├── workercmdproc/
+│   │       └── tests/
+│   │           ├── architecture/
+│   │           ├── configs/
+│   │           └── small/
+│   ├── tests/
+│   │   ├── README.md
+│   │   └── small/
+│   │       └── README.md
+│   ├── configs/
+│   │   └── README.md
+│   └── scripts/
+│       └── README.md
 ├── src/
 │   └── README.md
 ├── tests/
@@ -67,11 +96,23 @@ JANUS 当前以本地 Golem/SST 工程为主要工程参考：
 - `tests/architecture/`：SST topology builder、CPU builder、NoC builder。
 - `tests/small/`：小型 runtime/test case 组织方式。
 
+## JANUS-local SST 硬件区
+
+`sst/` 是 JANUS 自己的 SST 硬件工程区。它当前用于承载一份 JANUS-local Golem SST element 源码树，作为学习、裁剪和自定义修改 Golem 组件的工作区。
+
+该目录不覆盖、不修改 `/data4/jjgong/RISC-V-CIM-Manycore-SST`。参考仓库只作为 upstream/reference；JANUS 的新增硬件内容在本仓库内独立演进。
+
+`docs/sst/` 与 `sst/` 的职责不同：
+
+- `docs/sst/`：设计文档、参考说明、迁移路线。
+- `sst/`：JANUS-local Golem 源码、测试参考、配置参考和未来自定义脚本。
+
 ## 建议阅读顺序
 
 1. [idea.md](idea.md)：原始 JANUS 概念。
 2. [docs/architecture/overview.md](docs/architecture/overview.md)：JANUS 工程架构视图。
 3. [docs/architecture/golem-reference-map.md](docs/architecture/golem-reference-map.md)：JANUS 与现有 Golem/SST 组件边界的映射。
 4. [docs/sst/component-boundary-plan.md](docs/sst/component-boundary-plan.md)：后续接入真实 SST component 的边界计划。
-5. [task_plan.md](task_plan.md)：当前工程推进计划。
-
+5. [sst/README.md](sst/README.md)：JANUS-local SST 硬件工程区说明。
+6. [sst/elements/golem/IMPORT_NOTES.md](sst/elements/golem/IMPORT_NOTES.md)：本地 Golem 源码导入范围和来源记录。
+7. [task_plan.md](task_plan.md)：当前工程推进计划。

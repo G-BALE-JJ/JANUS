@@ -10,6 +10,7 @@
 
 - 创建项目入口文档和少量架构文档。
 - 记录 JANUS 和现有 Golem/SST 组件之间的参考关系。
+- 在项目内创建 `sst/elements/golem/`，作为 JANUS-local Golem SST element 学习和自定义修改区。
 - 保留 `src/`、`tests/`、`scripts/` 作为未来实现入口，但当前只放 README。
 - 建立持续更新的 `task_plan.md`、`findings.md`、`progress.md`。
 
@@ -20,6 +21,7 @@
 - 不写 Python/C++ 原型实现。
 - 不创建 schema/workload/ISA/simulation 泛化目录。
 - 不修改 `RISC-V-CIM-Manycore-SST`。
+- 不复制 `RISC-V-CIM-Manycore-SST` 的构建产物、缓存、运行 artifacts。
 - 不写论文相关内容。
 
 ## Phase 0: 项目骨架与参考映射
@@ -34,6 +36,18 @@
 - [x] 创建 `src/README.md`、`tests/README.md`、`scripts/README.md` 占位入口。
 - [x] 记录当前参考事实到 `findings.md`。
 
+## Phase 0.5: JANUS-local SST 硬件目录
+
+状态：`complete`
+
+任务：
+
+- [x] 创建 `sst/` 作为 JANUS 自己的 SST 硬件工程区。
+- [x] 将过早拆分的 `sst/elements/janus/` 收敛为 `sst/elements/golem/`。
+- [x] 从参考仓库导入 Golem 核心源码和精选测试参考。
+- [x] 创建 `sst/tests/small/`、`sst/configs/`、`sst/scripts/` 占位目录。
+- [x] 记录原则：参考 `RISC-V-CIM-Manycore-SST`，但不修改该项目；本地改动在 JANUS 内完成。
+
 ## Phase 1: JANUS 架构边界冻结
 
 状态：`pending`
@@ -44,6 +58,7 @@
 - [ ] 明确 D-Golem 的 KV local memory 是否扩展 `globalmemory/`，还是新增专用 KV memory endpoint。
 - [ ] 明确 KV migration fabric 是否先复用 Merlin mesh + DMA path，还是新增专用 fabric component。
 - [ ] 明确 host/runtime descriptor 与 worker command descriptor 的最小字段。
+- [ ] 明确 `sst/elements/golem/` 中第一批 JANUS-specific 修改点。
 
 ## Phase 2: 参考 Golem 路径最小接入设计
 
@@ -85,4 +100,4 @@
 | 过早创建泛化 schema/workload/ISA 目录 | 项目偏离真实 SST/Golem 接入 | 已明确不创建 |
 | 直接跑 SST | 容易被环境和工具链问题阻塞 | 当前不运行验证 |
 | 不区分 P-Golem/D-Golem 与现有 Golem 组件边界 | 后续实现容易重写已有能力 | 通过 `golem-reference-map.md` 固化映射 |
-
+| 直接修改参考仓库 | 影响现有 Golem/SST 项目稳定性 | 已建立 JANUS-local `sst/elements/golem/` 源码区 |
